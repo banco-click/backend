@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+﻿from rest_framework import viewsets
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from django.http import HttpResponse, JsonResponse
@@ -15,7 +15,7 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 #Essa classe verifica se o usuario já existe no banco de dados do projeto
 class UsuarioExiste(APIView):
 	#Deixa a visualização privada (Acessivel penas com o TOKEN JWT)
-	permission_classes = (IsAuthenticated,)
+	#permission_classes = (IsAuthenticated,)
 
 	def get(self, request, usuario):
 		#Faz a consulta no banco para verificar o usuario
