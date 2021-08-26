@@ -22,4 +22,4 @@ class UsuarioExiste(APIView):
 		if (len(Usuario.objects.filter(username=usuario)) > 0):
 			return JsonResponse({"usuarioExiste": True}, status=200)
 		else:
-			return JsonResponse({"usuarioExiste": False}, status=400)
+			return JsonResponse({"usuarioExiste": False}, status=200)
