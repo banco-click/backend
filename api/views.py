@@ -3,8 +3,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .models import Usuario
-from .serializers import UsuarioSerializer
+from .models import Usuario, Transferencia
+from .serializers import UsuarioSerializer, TransferenciaSerializer
 
 #Essa visualização se encarrega da criação do usuário
 class UsuarioViewSet(viewsets.ModelViewSet):
@@ -23,3 +23,10 @@ class UsuarioExiste(APIView):
 			return JsonResponse({"usuarioExiste": True}, status=200)
 		else:
 			return JsonResponse({"usuarioExiste": False}, status=200)
+
+#Essa classe se coordena o endpoint de transferências
+class Transferencia(viewsets.ModelViewSet):
+	permission_classes = (IsAuthenticated,)
+	queryset = Transferencia.objects.all()
+	serializer_class = TransferenciaSerializer
+	lookup_field = "id"

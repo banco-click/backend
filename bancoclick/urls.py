@@ -38,6 +38,8 @@ schema_view = get_schema_view(
 #Configuração de rotas personalizadas
 router = routers.DefaultRouter()
 router.register(r'usuario', views.UsuarioViewSet, basename='usuario')
+transferencia = routers.DefaultRouter()
+transferencia.register(r'ted', views.Transferencia, basename='transferencia'),
 
 urlpatterns = [
     path('', include(router.urls)),
@@ -45,5 +47,6 @@ urlpatterns = [
     path('token/',  jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
     path('usuario/existe/<usuario>/', views.UsuarioExiste.as_view()),
+    path('transferencia/', include(transferencia.urls)),
     path('admin/', admin.site.urls),
 ]
